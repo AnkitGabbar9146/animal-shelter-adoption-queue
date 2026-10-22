@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adoption Interest Queue | ShelterDesk</title>
+  <meta name="description" content="Record, search, and review animal adoption interest requests in a private, browser-local shelter workspace.">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/validation.js"></script>
+  <script defer src="js/storage.js"></script>
+  <script defer src="js/analytics.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <div class="brand">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="4" r="2"></circle>
+            <circle cx="18" cy="8" r="2"></circle>
+            <circle cx="20" cy="16" r="2"></circle>
+            <path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"></path>
+          </svg>
+        </span>
+        <span>
+          <p class="brand__name">ShelterDesk</p>
+          <p class="brand__caption">ADOPTION OPERATIONS</p>
+        </span>
+      </div>
+      <p class="staff-label">
+        <span>Staff Portal</span>
+        <span class="staff-avatar" aria-hidden="true">SD</span>
+      </p>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="page-intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">ANIMAL SHELTER &middot; OPERATIONS</p>
+        <h1 id="page-title">Adoption Interest Queue</h1>
+        <p class="page-intro__copy">Manage adoption requests clearly, safely, and efficiently.</p>
+      </div>
+    </section>
+
+    <section class="summary-grid" aria-label="Request summary">
+      <article class="summary-card">
+        <h2>Total Requests</h2>
+        <p class="summary-number">00</p>
+      </article>
+      <article class="summary-card">
+        <h2>Pending</h2>
+        <p class="summary-number">00</p>
+      </article>
+      <article class="summary-card">
+        <h2>Completed</h2>
+        <p class="summary-number">00</p>
+      </article>
+    </section>
+
+    <p class="storage-warning" role="alert" hidden></p>
+
+    <div class="workspace-grid">
+      <section class="panel form-panel" aria-labelledby="form-heading">
+        <div class="panel-heading">
+          <h2 id="form-heading">Add Adoption Interest</h2>
+          <p>Fields marked with an asterisk are required.</p>
+        </div>
+
+        <form class="adoption-form" novalidate>
+          <div class="field">
+            <label for="applicantName">Applicant name <span aria-hidden="true">*</span></label>
+            <input type="text" id="applicantName" name="applicantName" maxlength="80" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="applicantEmail">Applicant email <span aria-hidden="true">*</span></label>
+            <input type="email" id="applicantEmail" name="applicantEmail" maxlength="254" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="animalName">Animal name <span aria-hidden="true">*</span></label>
+            <input type="text" id="animalName" name="animalName" maxlength="80" required>
+          </div>
+          <div class="field">
+            <label for="animalType">Animal type <span aria-hidden="true">*</span></label>
+            <select id="animalType" name="animalType" required>
+              <option value="" disabled selected>Select a type</option>
+              <option value="Dog">Dog</option>
+              <option value="Cat">Cat</option>
+              <option value="Rabbit">Rabbit</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-button">Add to Queue</button>
+          <p class="required-note">* Required field</p>
+          <p class="form-message" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="panel queue-panel" aria-labelledby="queue-heading">
+        <div class="queue-heading">
+          <div>
+            <h2 id="queue-heading">Interest Requests</h2>
+            <p>Search and filter requests currently in the queue.</p>
+          </div>
+          <span class="queue-count" aria-label="Total requests in queue">0</span>
+        </div>
+
+        <div class="queue-toolbar">
+          <div class="search-wrapper">
+            <label for="search" class="sr-only">Search by applicant or animal name</label>
+            <input type="search" id="search" placeholder="Search applicant or animal name">
+          </div>
+          <div class="filter-wrapper">
+            <label for="status-filter" class="sr-only">Filter by status</label>
+            <select id="status-filter">
+              <option>All statuses</option>
+              <option>Pending</option>
+              <option>In Review</option>
+              <option>Completed</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="request-list" aria-live="polite" aria-busy="false">
+          <div class="empty-state">
+            <h3>No data found</h3>
+            <p>No adoption requests yet. Add your first request using the form on the left.</p>
+            <p class="empty-hint">Fields marked with an asterisk are required to add a request.</p>
+          </div>
+        </div>
+
+        <p class="queue-footer"><span>0 requests in your queue</span></p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="page-footer">
+    <p>ShelterDesk keeps requests in this browser only. Nothing is sent to a server or shared with other devices.</p>
+  </footer>
+</body>
+</html>
